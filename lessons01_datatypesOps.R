@@ -252,3 +252,119 @@ unclass(xcity)
 #attr(,"levels")
 #[1] "khi" "hbd" "skr"
 
+
+### Lesson 5.7 ###
+# Missing Values ##
+
+misx <- c(1 , 2, NA , 4)
+is.na (misx)          #NA is a seperate data Null value in R shows empty cell
+#[1] FALSE FALSE  TRUE FALSE
+
+is.nan(misx)                #NAN (not a number) 
+#[1] FALSE FALSE FALSE FALSE
+
+
+misy <- c (1 , 2, NaN, NA , 4)
+is.na(misy)         #nan will be true in is.na
+#[1] FALSE FALSE  TRUE  TRUE FALSE
+
+is.nan(misy)          #nan only true on nan data   
+#[1] FALSE FALSE  TRUE FALSE FALSE
+
+### Lesson 5.8 ###
+## Data Frames ## used to store data tabular in rows and col. like excel
+#unlike matrix, table data can store all class data like list while 
+#matrix only stores same class elements
+# WE can import data in csv file read.csv() table.csv()
+#creating data table d
+dx <- data.frame(day = 1:4, rain = c(T,T,F,T))
+dx
+#  day  rain
+#1   1  TRUE
+#2   2  TRUE
+#3   3 FALSE
+#4   4  TRUE
+
+#we can calculate the total num of rows and col by nrow, ncol
+nrow(dx)
+#[1] 4
+ncol(dx)
+#[1] 2
+
+#we can name the rows by row.name()
+row.names(dx) <- c("a","b","c","d")
+dx
+#  day  rain
+#a   1  TRUE
+#b   2  TRUE
+#c   3 FALSE
+#d   4  TRUE
+
+#note num of rows of data col must be equal
+
+### Lesson 5.9 ###
+## Object Names ## We can assign object names
+
+ox <- c(1:4)
+ox
+#[1] 1 2 3 4
+names(ox)
+#NULL bcz ox objects have no names now we assigning to it
+
+names(ox) <- c("c1","c2","c3","c4")
+names(ox)  
+#[1] "c1" "c2" "c3" "c4"
+#so names of ox objects assigned we can call specific object element by name
+#above example was for single vector
+#now we create multiple lists withs assigned names
+
+oxl <- list( a = 1:4, b= "id card" , c= c("Fname", "Lname"))
+oxl
+#$a
+#[1] 1 2 3 4
+
+#$b
+#[1] "id card"
+
+#$c
+#[1] "Fname" "Lname"
+
+#if we recall names of oxl list
+names(oxl)
+#[1] "a" "b" "c"   so list oxl has three sub lists in it
+
+#we can access spacific sub list by droller symble
+oxl$a
+#[1] 1 2 3 4
+# same process for sub list b and c
+
+#now we will assign names to matrix
+mxn <- matrix(1:4 , nrow = 2 , ncol = 2)
+mxn
+#       [,1] [,2]       #without names
+#[1,]    1    3
+#[2,]    2    4
+# now we assign names
+
+dimnames(mxn) #null
+dimnames(mxn) <- list(c("r1","r2"), c("c1","c2"))
+dimnames(mxn)
+#[[1]]
+#[1] "r1" "r2"
+
+#[[2]]
+#[1] "c1" "c2"
+mxn
+#  c1 c2
+#r1  1  3
+#r2  2  4
+
+## 5.10 summery ##
+#data types 
+# atomic classess : numaric,character, integer, logical, complex
+#vectors, lists, matrix
+#missing vakues
+#factors
+#data frames
+#names
+
